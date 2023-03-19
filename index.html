@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitagorasz feladat</title>
+    <style>
+        body{
+            background-color: aqua;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+        .betu {
+            font-family: 'Fjalla One', sans-serif;
+            color: white;
+        }
+        .betu2 {
+            font-family: 'Fjalla One', sans-serif;
+        }
+        #haromszog {
+            width: 0;
+            height: 0;
+            border-left: 0px solid transparent;
+            border-right: 200px solid transparent;
+            border-bottom: 100px solid;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h1 class="betu">PITAGORASZ FELADAT</h1>
+    <img src="kep.png" alt="Derékszögű háromszög">
+    <form action="javascript:void(0)">
+            <br>
+            <label for="a" style="color: white;">a oldal:</label>
+            <input class="betu2" s type="text" name="pit" id="a" oninput="szamol()"><br>
+            <label for="b" style="color: white;">b oldal:</label>
+            <input class="betu2" type="text" name="pit" id="b" oninput="szamol()"><br>
+            <label for="c" style="color: white;">c oldal:</label>
+            <input class="betu2" type="text" name="pit" id="c" oninput="szamol()"><br><br>
+            <input type="button" name="pit" value="TÖRLÉS" onclick="torles()">
+        </fieldset>
+    </form>
+    <br>
+    <h3 class="betu">A megadott paraméterek alapján rajzolt háromszög:</h3>
+    <div id="haromszog"></div>
+    <script>
+        function szamol() {
+            if (a.value != 0 && b.value != 0) {
+                c.value = Math.sqrt((a.value * a.value) + (b.value * b.value));
+                document.getElementById("c");
+
+            } else if (a.value != 0 && c.value != 0) {
+                b.value = Math.sqrt((c.value * c.value) - (a.value * a.value));
+                document.getElementById("b");
+            } else if (b.value != 0 && c.value != 0) {
+                a.value = Math.sqrt((c.value * c.value) - (b.value * b.value));
+                document.getElementById("a");
+            }
+            const haromszog = document.getElementById("haromszog");
+            haromszog.style = "border-left:" + 0 + "px solid transparent;" +
+                "border-right:" + b.value * 10 + "px solid transparent;" +
+                "border-bottom:" + a.value * 10 + "px solid;";
+        }
+        function torles() {
+            a.value = "";
+            b.value = "";
+            c.value = "";
+            document.location.reload();
+        }
+    </script>
+</center>    
+</body>
+</html>
